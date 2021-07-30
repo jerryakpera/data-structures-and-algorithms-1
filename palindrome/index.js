@@ -5,7 +5,27 @@
 //   palindrome("Madam") === true
 //   palindrome("love") === false
 
-function palindrome(str) {}
+function palindrome(str) {
+  str = str.toLowerCase();
+  // Using split, reverse and join
+  return str === str.split('').reverse().join('');
+
+  // Using for loop
+  // let reverseStr = '';
+  // for (let i = str.length - 1; i >= 0; i--) {
+  //   reverseStr += str[i];
+  // }
+
+  // return reverseStr === str;
+
+  // Using reduce
+  // let reverseStr = str.split('').reduce((output, char) => {
+  //   output = char + output;
+  //   return output;
+  // });
+
+  // return reverseStr === str;
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
@@ -30,30 +50,30 @@ function palindrome(str) {}
 //                          ______ ______ ______ ______ ______
 //                         |______|______|______|______|______|
 
-mocha.setup("bdd");
+mocha.setup('bdd');
 const { assert } = chai;
 
-describe("Palindrome", () => {
+describe('Palindrome', () => {
   it('"bcb" is a palindrome', () => {
-    assert.equal(palindrome("bcb"), true);
+    assert.equal(palindrome('bcb'), true);
   });
   it('"   bcb" is not a palindrome', () => {
-    assert.equal(palindrome(" bcb"), false);
+    assert.equal(palindrome(' bcb'), false);
   });
   it('"bcb   " is not a palindrome', () => {
-    assert.equal(palindrome("bcb "), false);
+    assert.equal(palindrome('bcb '), false);
   });
   it('"love" is not a palindrome', () => {
-    assert.equal(palindrome("love"), false);
+    assert.equal(palindrome('love'), false);
   });
   it('"699996" a palindrome', () => {
-    assert.equal(palindrome("699996"), true);
+    assert.equal(palindrome('699996'), true);
   });
   it('"racecar" a palindrome', () => {
-    assert.equal(palindrome("bcb"), true);
+    assert.equal(palindrome('bcb'), true);
   });
-  it("is case insensitive.", () => {
-    assert.equal(palindrome("Trunk knurt"), true);
+  it('is case insensitive.', () => {
+    assert.equal(palindrome('Trunk knurt'), true);
   });
 });
 

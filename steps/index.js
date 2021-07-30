@@ -16,7 +16,14 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+  for (let i = 1; i <= n; i++) {
+    let str;
+    str = '#'.repeat(i);
+    str += ' '.repeat(n - i);
+    console.log(str);
+  }
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
@@ -41,17 +48,17 @@ function steps(n) {}
 //                          ______ ______ ______ ______ ______
 //                         |______|______|______|______|______|
 
-mocha.setup("bdd");
+mocha.setup('bdd');
 const { assert } = chai;
 console.log = sinon.spy();
 
-describe("Steps", () => {
-  it("steps() works", () => {
+describe('Steps', () => {
+  it('steps() works', () => {
     steps(3);
     assert.equal(console.log.callCount, 3);
-    assert.equal(console.log.getCall(0).args[0], "#  ");
-    assert.equal(console.log.getCall(1).args[0], "## ");
-    assert.equal(console.log.getCall(2).args[0], "###");
+    assert.equal(console.log.getCall(0).args[0], '#  ');
+    assert.equal(console.log.getCall(1).args[0], '## ');
+    assert.equal(console.log.getCall(2).args[0], '###');
   });
 });
 

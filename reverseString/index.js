@@ -4,7 +4,25 @@
 //   reverse('abcd') === 'dcba'
 //   reverse('Hello!') === '!olleH'
 
-function reverse(str) {}
+function reverse(str) {
+  // Using JS inbuilt reverse method
+  // return str.split('').reverse().join('');
+
+  // Using reduce
+  return str.split('').reduce((output, char) => {
+    output = char + output;
+    return output;
+  });
+
+  // Using for loop and splitting string to arr
+  let reverseStr = '';
+
+  for (let i = str.length - 1; i >= 0; i--) {
+    reverseStr += str[i];
+  }
+
+  return reverseStr;
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
@@ -33,10 +51,10 @@ mocha.setup('bdd');
 const { assert } = chai;
 
 describe('String Reversal', () => {
-	it('reverse() correctly reverses string', () => {
-		assert.equal(reverse('ffaa'), 'aaff');
-		assert.equal(reverse('  aaff'), 'ffaa  ');
-	});
+  it('reverse() correctly reverses string', () => {
+    assert.equal(reverse('ffaa'), 'aaff');
+    assert.equal(reverse('  aaff'), 'ffaa  ');
+  });
 });
 
 mocha.run();

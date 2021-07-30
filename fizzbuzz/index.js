@@ -11,7 +11,14 @@
 //   4
 //   buzz
 
-function fizzBuzz(n) {}
+function fizzBuzz(n) {
+  for (let i = 1; i <= n; i++) {
+    if (i % 5 === 0 && i % 3 === 0) console.log('fizzbuzz');
+    else if (i % 5 === 0) console.log('buzz');
+    else if (i % 3 === 0) console.log('fizz');
+    else console.log(i);
+  }
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
@@ -36,32 +43,32 @@ function fizzBuzz(n) {}
 //                          ______ ______ ______ ______ ______
 //                         |______|______|______|______|______|
 
-mocha.setup("bdd");
+mocha.setup('bdd');
 const { assert } = chai;
 console.log = sinon.spy();
 
-describe("Fizz Buzz", () => {
-  it("fizzbuzz(30) should console log 30 times", () => {
+describe('Fizz Buzz', () => {
+  it('fizzbuzz(30) should console log 30 times', () => {
     fizzBuzz(30);
     assert.equal(console.log.callCount, 30);
   });
-  it("fizzbuzz(30) console logs correct values", () => {
+  it('fizzbuzz(30) console logs correct values', () => {
     fizzBuzz(30);
     assert.equal(console.log.getCall(0).args[0], 1);
     assert.equal(console.log.getCall(1).args[0], 2);
-    assert.equal(console.log.getCall(2).args[0], "fizz");
+    assert.equal(console.log.getCall(2).args[0], 'fizz');
     assert.equal(console.log.getCall(3).args[0], 4);
-    assert.equal(console.log.getCall(4).args[0], "buzz");
-    assert.equal(console.log.getCall(5).args[0], "fizz");
+    assert.equal(console.log.getCall(4).args[0], 'buzz');
+    assert.equal(console.log.getCall(5).args[0], 'fizz');
     assert.equal(console.log.getCall(6).args[0], 7);
     assert.equal(console.log.getCall(7).args[0], 8);
-    assert.equal(console.log.getCall(8).args[0], "fizz");
-    assert.equal(console.log.getCall(9).args[0], "buzz");
+    assert.equal(console.log.getCall(8).args[0], 'fizz');
+    assert.equal(console.log.getCall(9).args[0], 'buzz');
     assert.equal(console.log.getCall(10).args[0], 11);
-    assert.equal(console.log.getCall(11).args[0], "fizz");
+    assert.equal(console.log.getCall(11).args[0], 'fizz');
     assert.equal(console.log.getCall(12).args[0], 13);
     assert.equal(console.log.getCall(13).args[0], 14);
-    assert.equal(console.log.getCall(14).args[0], "fizzbuzz");
+    assert.equal(console.log.getCall(14).args[0], 'fizzbuzz');
   });
 });
 

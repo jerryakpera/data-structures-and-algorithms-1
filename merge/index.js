@@ -5,7 +5,33 @@
 // merge([1,5], [4,6,7]) === [1,4,5,6,7]
 // merge([4,6,7], [1,5]) === [1,4,5,6,7]
 
-function merge(sortedArr1, sortedArr2) {}
+function merge(sortedArr1, sortedArr2) {
+  let p1 = 0;
+  let p2 = 0;
+  let res = [];
+
+  while (p1 < sortedArr1.length && p2 < sortedArr2.length) {
+    if (sortedArr1[p1] < sortedArr2[p2]) {
+      res.push(sortedArr1[p1]);
+      p1++;
+    } else {
+      res.push(sortedArr2[p2]);
+      p2++;
+    }
+  }
+
+  while (p1 < sortedArr1.length) {
+    res.push(sortedArr1[p1]);
+    p1++;
+  }
+
+  while (p2 < sortedArr2.length) {
+    res.push(sortedArr2[p2]);
+    p2++;
+  }
+
+  return res;
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
@@ -30,23 +56,23 @@ function merge(sortedArr1, sortedArr2) {}
 //                          ______ ______ ______ ______ ______
 //                         |______|______|______|______|______|
 
-mocha.setup("bdd");
+mocha.setup('bdd');
 const { assert } = chai;
 
-describe("merge()", () => {
-  it("merge([1, 3], [2, 4]) returns [1, 2, 3, 4]", () => {
+describe('merge()', () => {
+  it('merge([1, 3], [2, 4]) returns [1, 2, 3, 4]', () => {
     assert.deepEqual(merge([1, 3], [2, 4]), [1, 2, 3, 4]);
   });
-  it("merge([1, 5], [4, 6, 7]) returns [1, 4, 5, 6, 7]", () => {
+  it('merge([1, 5], [4, 6, 7]) returns [1, 4, 5, 6, 7]', () => {
     assert.deepEqual(merge([1, 5], [4, 6, 7]), [1, 4, 5, 6, 7]);
   });
-  it("merge([4, 6, 7], [1, 5]) returns [1, 4, 5, 6, 7]", () => {
+  it('merge([4, 6, 7], [1, 5]) returns [1, 4, 5, 6, 7]', () => {
     assert.deepEqual(merge([4, 6, 7], [1, 5]), [1, 4, 5, 6, 7]);
   });
-  it("merge([], []) returns []", () => {
+  it('merge([], []) returns []', () => {
     assert.deepEqual(merge([], []), []);
   });
-  it("merge returns new array and does NOT modify input arrays", () => {
+  it('merge returns new array and does NOT modify input arrays', () => {
     const a1 = [1, 3];
     const a2 = [2, 4];
     merge(a1, a2);

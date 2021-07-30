@@ -8,7 +8,22 @@
 // caeserCipher("abcd", 100) === "wxyz";
 // caeserCipher("gurer ner 9 qbtf!", 13) === "there are 9 dogs!"
 
-function caesarCipher(str, shift) {}
+function caesarCipher(str, shift) {
+  const alphabetsArray = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+  return str
+    .split('')
+    .map((char) => {
+      let charIndex = alphabetsArray.findIndex((c) => c === char);
+      if (charIndex < 0) return char;
+
+      let newCharIndex = charIndex + shift;
+
+      if (newCharIndex <= 25) return alphabetsArray[newCharIndex];
+      return alphabetsArray[newCharIndex % 26];
+    })
+    .join('');
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
@@ -33,17 +48,17 @@ function caesarCipher(str, shift) {}
 //                          ______ ______ ______ ______ ______
 //                         |______|______|______|______|______|
 
-mocha.setup("bdd");
+mocha.setup('bdd');
 const { assert } = chai;
 
-describe("caesarCipher()", () => {
-  it("shifts letters correctly.", () => {
-    assert.equal(caesarCipher("abcd", 1), "bcde");
-    assert.equal(caesarCipher("yz", 1), "za");
-    assert.equal(caesarCipher("abcd", 100), "wxyz");
+describe('caesarCipher()', () => {
+  it('shifts letters correctly.', () => {
+    assert.equal(caesarCipher('abcd', 1), 'bcde');
+    assert.equal(caesarCipher('yz', 1), 'za');
+    assert.equal(caesarCipher('abcd', 100), 'wxyz');
   });
   it("does not shift digits or other characters such as '!'.", () => {
-    assert.equal(caesarCipher("gurer ner 9 qbtf!", 13), "there are 9 dogs!");
+    assert.equal(caesarCipher('gurer ner 9 qbtf!', 13), 'there are 9 dogs!');
   });
 });
 

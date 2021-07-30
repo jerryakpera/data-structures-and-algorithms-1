@@ -3,7 +3,17 @@
 // stringPatternSearch("lollipop", "lol") --> 1
 // stringPatternSearch("lolol", "lol") --> 2
 
-function stringPatternSearch(text, pattern) {}
+function stringPatternSearch(text, pattern) {
+  let count = 0;
+
+  text.split('').forEach((char, i) => {
+    let str = text.substr(i, pattern.length);
+
+    if (str === pattern) count++;
+  });
+
+  return count;
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
@@ -28,13 +38,13 @@ function stringPatternSearch(text, pattern) {}
 //                          ______ ______ ______ ______ ______
 //                         |______|______|______|______|______|
 
-mocha.setup("bdd");
+mocha.setup('bdd');
 const { assert } = chai;
 
-describe("stringPatternSearch()", () => {
-  it("works.", () => {
-    assert.equal(stringPatternSearch("lollipop", "lol"), 1);
-    assert.equal(stringPatternSearch("lolol", "lol"), 2);
+describe('stringPatternSearch()', () => {
+  it('works.', () => {
+    assert.equal(stringPatternSearch('lollipop', 'lol'), 1);
+    assert.equal(stringPatternSearch('lolol', 'lol'), 2);
   });
 });
 
